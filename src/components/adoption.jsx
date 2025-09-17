@@ -88,8 +88,36 @@ const Adoption = () => {
       size: 'Medium',
       location: 'Montana',
       image: 'https://images.pexels.com/photos/1458916/pexels-photo-1458916.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&dpr=2',
-      type: 'goat',
+      type: 'farm',
       description: 'Energetic goat who loves climbing and exploring new areas.',
+      vaccinated: true,
+      neutered: true
+    },
+    {
+      id: 7,
+      name: 'Polly',
+      breed: 'Macaw',
+      age: '5 years',
+      gender: 'Female',
+      size: 'Small',
+      location: 'Florida',
+      image: 'https://images.pexels.com/photos/2317904/pexels-photo-2317904.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&dpr=2',
+      type: 'bird',
+      description: 'A colorful and talkative parrot who loves attention.',
+      vaccinated: true,
+      neutered: false
+    },
+    {
+      id: 8,
+      name: 'Oink',
+      breed: 'Pot-bellied pig',
+      age: '2 years',
+      gender: 'Male',
+      size: 'Medium',
+      location: 'Iowa',
+      image: 'https://images.pexels.com/photos/1416833/pexels-photo-1416833.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&dpr=2',
+      type: 'farm',
+      description: 'A very smart and clean pig who loves belly rubs.',
       vaccinated: true,
       neutered: true
     }
@@ -159,10 +187,16 @@ const Adoption = () => {
             Cats
           </button>
           <button 
-            className={`filter-btn ${filterType === 'cow' ? 'active' : ''}`}
-            onClick={() => setFilterType('cow')}
+            className={`filter-btn ${filterType === 'farm' ? 'active' : ''}`}
+            onClick={() => setFilterType('farm')}
           >
-            Cows
+            Farm
+          </button>
+          <button 
+            className={`filter-btn ${filterType === 'bird' ? 'active' : ''}`}
+            onClick={() => setFilterType('bird')}
+          >
+            Birds
           </button>
         </div>
       </div>

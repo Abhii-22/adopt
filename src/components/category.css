@@ -6,9 +6,9 @@
 }
 
 .category-container {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: #000;
   min-height: 100vh;
-  color: #333;
+  color: #fff;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   overflow-x: hidden;
 }
@@ -20,8 +20,7 @@
   align-items: center;
   justify-content: center;
   position: relative;
-  background: linear-gradient(135deg, rgba(102, 126, 234, 0.9), rgba(118, 75, 162, 0.9));
-  backdrop-filter: blur(20px);
+  background: #000;
 }
 
 .hero-section::before {
@@ -31,8 +30,8 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: url('https://images.pexels.com/photos/1805164/pexels-photo-1805164.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&dpr=2') center/cover;
-  opacity: 0.1;
+  background: none; /* Remove background image */
+  opacity: 0;
   z-index: -1;
 }
 
@@ -142,8 +141,7 @@
 /* Categories Section */
 .categories-section {
   padding: 100px 40px;
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(20px);
+  background: #000;
 }
 
 .section-header {
@@ -360,8 +358,7 @@
 /* Call to Action Section */
 .cta-section {
   padding: 80px 40px;
-  background: rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(20px);
+  background: #000;
 }
 
 .cta-content {
