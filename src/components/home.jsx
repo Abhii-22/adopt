@@ -6,7 +6,7 @@ import FeedbackAndContact from './Feedback';
 
 const Home = () => {
   return (
-    <div className="home-container">
+    <div className="home-container" style={{ backgroundImage: 'url(/images/black_dog.png)' }}>
       <header className="header">
         <div className="logo">
           <span role="img" aria-label="paw">🐾</span>

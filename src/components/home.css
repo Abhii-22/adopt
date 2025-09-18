@@ -1,6 +1,5 @@
 .home-container {
   background-color: #000;
-  background-image: url('../images/black_dog.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -186,40 +185,45 @@
 }
 
 /* Responsive Design */
+@media (max-width: 992px) {
+  .header {
+    padding: 15px 40px;
+  }
+  .animals-section h1 {
+    font-size: 3.5rem;
+  }
+}
+
 @media (max-width: 768px) {
   .header {
-    padding: 15px 30px;
-    flex-wrap: wrap;
+    padding: 15px 20px;
+    flex-direction: column;
     gap: 15px;
+  }
+
+  .nav-links {
+    margin-left: 0;
+    justify-content: center;
+    flex-wrap: wrap;
   }
   
   .logo-text {
     font-size: 1.5rem;
   }
   
-  .nav-links {
-    gap: 20px;
-    order: 3;
-    width: 100%;
-    justify-content: center;
-  }
-  
-  .nav-link {
-    padding: 6px 12px;
-    font-size: 0.9rem;
-  }
-  
   .main-content {
-    padding: 40px 30px;
+    padding: 40px 20px;
   }
   
   .animals-section {
-    padding: 0 30px;
+    padding: 0 20px;
     min-height: 70vh;
+    justify-content: center;
+    text-align: center;
   }
   
   .animals-section h1 {
-    font-size: 2.5rem;
+    font-size: 2.8rem;
   }
   
   .animals-section h2 {
@@ -227,41 +231,34 @@
   }
   
   .animals-section p {
-    font-size: 1rem;
+    font-size: 1.1rem;
   }
 }
 
 @media (max-width: 480px) {
   .header {
-    padding: 12px 20px;
-    flex-direction: column;
-    gap: 15px;
+    padding: 10px 15px;
   }
-  
-  .logo {
-    order: 1;
+
+  .logo span {
+    font-size: 1.8rem;
   }
-  
-  .header-right {
-    order: 2;
+
+  .logo-text {
+    font-size: 1.3rem;
   }
   
   .nav-links {
-    order: 3;
-    gap: 15px;
+    gap: 10px;
   }
-  
-  .main-content {
-    padding: 30px 20px;
-  }
-  
-  .animals-section {
-    padding: 0 20px;
-    min-height: 60vh;
+
+  .nav-link {
+    padding: 5px 10px;
+    font-size: 0.85rem;
   }
   
   .animals-section h1 {
-    font-size: 2rem;
+    font-size: 2.2rem;
   }
   
   .animals-section h2 {
@@ -269,16 +266,11 @@
   }
   
   .animals-section p {
-    font-size: 0.9rem;
+    font-size: 1rem;
   }
   
   .adopt-button {
     padding: 12px 25px;
     font-size: 1rem;
-  }
-  
-  .nav-link {
-    padding: 5px 10px;
-    font-size: 0.85rem;
   }
 }

@@ -53,11 +53,16 @@ const Feedback = () => {
 
 const Contact = () => {
   return (
-    <div id="contact-section" className="contact-section">
-      <h2 className="contact-title">Get in Touch</h2>
-      <p className="contact-subtitle">We're here to help you on your adoption journey. Reach out to us with any questions!</p>
+    <section id="contact-section" className="contact-section">
+      <div className="contact-header">
+        <h2 className="contact-title">Get in Touch</h2>
+        <p className="contact-subtitle">
+          We're here to help you on your adoption journey. Reach out with any questions!
+        </p>
+      </div>
       <div className="contact-content-wrapper">
-        <div className="contact-info-map">
+        {/* Left Side: Info & Map */}
+        <div className="contact-info-map reveal-left">
           <div className="contact-details">
             <h3>Our Location & Hours</h3>
             <p>123 Animal Lover Lane<br/>Pawsburg, CA 94102</p>
@@ -65,19 +70,20 @@ const Contact = () => {
             <p><strong>Phone:</strong> +1 (123) 456-7890</p>
           </div>
           <div className="map-container">
-            <iframe 
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.0195754992453!2d-122.41941548468113!3d37.77492957975933!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80858064f95d8e7f%3A0x1e27a1abe7a0a0b5!2sSan%20Francisco%2C%20CA!5e0!3m2!1sen!2sus!4v1616000000000!5m2!1sen!2sus" 
-              width="100%" 
-              height="250" 
-              style={{ border: 0 }} 
-              allowFullScreen="" 
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.0195754992453!2d-122.41941548468113!3d37.77492957975933!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80858064f95d8e7f%3A0x1e27a1abe7a0a0b5!2sSan%20Francisco%2C%20CA!5e0!3m2!1sen!2sus!4v1616000000000!5m2!1sen!2sus"
+              width="100%"
+              height="250"
+              style={{ border: 0 }}
+              allowFullScreen=""
               loading="lazy"
-              title="Our Location">
-            </iframe>
+              title="Our Location"
+            ></iframe>
           </div>
         </div>
+
       </div>
-    </div>
+    </section>
   );
 };
 
