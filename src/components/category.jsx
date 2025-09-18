@@ -1,108 +1,68 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './category.css';
+import { animals as adoptionAnimals } from './adoption';
 
 const Category = () => {
   const navigate = useNavigate();
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [hoveredCategory, setHoveredCategory] = useState(null);
 
-  const categories = [
-    {
-      id: 1,
+  const categoriesData = {
+    dog: {
       name: 'Dogs',
       icon: '🐕',
       description: 'Loyal companions who bring joy to every home',
-      count: 25,
       color: '#FF6B6B',
       bgImage: 'https://images.pexels.com/photos/1805164/pexels-photo-1805164.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&dpr=2',
-      animals: [
-        { name: 'Golden Retriever', count: 8 },
-        { name: 'Labrador', count: 6 },
-        { name: 'German Shepherd', count: 4 },
-        { name: 'Beagle', count: 3 },
-        { name: 'Poodle', count: 2 },
-        { name: 'Others', count: 2 }
-      ]
     },
-    {
-      id: 2,
+    cat: {
       name: 'Cats',
       icon: '🐱',
       description: 'Independent spirits with hearts full of love',
-      count: 18,
       color: '#4ECDC4',
       bgImage: 'https://images.pexels.com/photos/104827/cat-pet-animal-domestic-104827.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&dpr=2',
-      animals: [
-        { name: 'Persian', count: 5 },
-        { name: 'Maine Coon', count: 4 },
-        { name: 'Siamese', count: 3 },
-        { name: 'British Shorthair', count: 2 },
-        { name: 'Ragdoll', count: 2 },
-        { name: 'Others', count: 2 }
-      ]
     },
-    {
-      id: 3,
+    bird: {
       name: 'Birds',
       icon: '🐦',
       description: 'Colorful melodies that brighten your day',
-      count: 12,
       color: '#45B7D1',
-      bgImage: 'https://images.pexels.com/photos/458976/pexels-photo-458976.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&dpr=2',
-      animals: [
-        { name: 'Parakeet', count: 4 },
-        { name: 'Canary', count: 3 },
-        { name: 'Cockatiel', count: 2 },
-        { name: 'Lovebird', count: 2 },
-        { name: 'Others', count: 1 }
-      ]
+      bgImage: 'https://images.pexels.com/photos/2317904/pexels-photo-2317904.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&dpr=2',
     },
-    {
-      id: 4,
+    rabbit: {
       name: 'Rabbits',
       icon: '🐰',
       description: 'Gentle souls with boundless energy',
-      count: 8,
       color: '#96CEB4',
       bgImage: 'https://images.pexels.com/photos/458976/pexels-photo-458976.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&dpr=2',
-      animals: [
-        { name: 'Dutch', count: 3 },
-        { name: 'Holland Lop', count: 2 },
-        { name: 'Mini Rex', count: 2 },
-        { name: 'Others', count: 1 }
-      ]
     },
-    {
-      id: 5,
+    farm: {
       name: 'Farm Animals',
       icon: '🐄',
       description: 'Hardy friends for rural adventures',
-      count: 15,
       color: '#FECA57',
       bgImage: 'https://images.pexels.com/photos/1824353/pexels-photo-1824353.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&dpr=2',
-      animals: [
-        { name: 'Cows', count: 6 },
-        { name: 'Goats', count: 4 },
-        { name: 'Sheep', count: 3 },
-        { name: 'Pigs', count: 2 }
-      ]
     },
-    {
-      id: 6,
-      name: 'Exotic',
-      icon: '🦎',
-      description: 'Unique companions for special hearts',
-      count: 6,
-      color: '#A55EEA',
-      bgImage: 'https://images.pexels.com/photos/1458916/pexels-photo-1458916.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&dpr=2',
-      animals: [
-        { name: 'Reptiles', count: 3 },
-        { name: 'Amphibians', count: 2 },
-        { name: 'Others', count: 1 }
-      ]
+    cow: {
+      name: 'Cows',
+      icon: '🐄',
+      description: 'Gentle giants for a peaceful farm life',
+      color: '#FECA57',
+      bgImage: 'https://images.pexels.com/photos/1824353/pexels-photo-1824353.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&dpr=2',
     }
-  ];
+  };
+
+  const categories = Object.keys(categoriesData).map((key, index) => {
+    const animalsInCategory = adoptionAnimals.filter(animal => animal.type === key);
+    return {
+      id: index + 1,
+      type: key,
+      ...categoriesData[key],
+      count: animalsInCategory.length,
+      animals: animalsInCategory.map(animal => ({ name: animal.name }))
+    };
+  }).filter(category => category.count > 0);
 
   const handleCategoryClick = (category) => {
     setSelectedCategory(category);
@@ -135,7 +95,7 @@ const Category = () => {
             </p>
             <div className="hero-stats">
               <div className="stat-item">
-                <span className="stat-number">84</span>
+                <span className="stat-number">{adoptionAnimals.length}</span>
                 <span className="stat-label">Total Animals</span>
               </div>
               <div className="stat-item">
@@ -253,7 +213,6 @@ const Category = () => {
                 {selectedCategory.animals.map((animal, index) => (
                   <div key={index} className="breed-card">
                     <span className="breed-name">{animal.name}</span>
-                    <span className="breed-count">{animal.count} available</span>
                   </div>
                 ))}
               </div>

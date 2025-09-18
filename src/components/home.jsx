@@ -16,7 +16,7 @@ const Home = () => {
           <Link to="/" className="nav-link">Home</Link>
           <Link to="/adoption" className="nav-link">Adoption</Link>
           <Link to="/category" className="nav-link">Category</Link>
-          <Link to="/about" className="nav-link">About</Link>
+          <a href="#about-section-home" onClick={(e) => { e.preventDefault(); document.getElementById('about-section-home').scrollIntoView({ behavior: 'smooth' }); }} className="nav-link">About</a>
           <Link to="/kit" className="nav-link">Kit</Link>
         </nav>
       </header>
@@ -29,7 +29,9 @@ const Home = () => {
           </div>
         </div>
       </main>
-            <About />
+      <div id="about-section-home">
+        <About />
+      </div>
       <FeedbackAndContact />
     </div>
   );
