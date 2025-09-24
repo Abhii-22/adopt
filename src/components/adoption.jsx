@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './adoption.css';
+import AdoptionForm from './AdoptionForm';
+import ShelterModal from './ShelterModal';
 
 export const animals = [
   {
@@ -15,7 +17,9 @@ export const animals = [
     type: 'dog',
     description: 'Friendly and energetic dog who loves playing fetch and going for walks.',
     vaccinated: true,
-    neutered: true
+    neutered: true,
+    price: 50,
+    phone: '123-456-7890'
   },
   {
     id: 2,
@@ -29,7 +33,9 @@ export const animals = [
     type: 'dog',
     description: 'Calm and gentle dog perfect for families with children.',
     vaccinated: true,
-    neutered: true
+    neutered: true,
+    price: 60,
+    phone: '123-456-7891'
   },
   {
     id: 3,
@@ -43,7 +49,9 @@ export const animals = [
     type: 'cat',
     description: 'Independent cat who enjoys quiet spaces and gentle pets.',
     vaccinated: true,
-    neutered: true
+    neutered: true,
+    price: 40,
+    phone: '123-456-7892'
   },
   {
     id: 4,
@@ -57,7 +65,9 @@ export const animals = [
     type: 'cow',
     description: 'Gentle cow perfect for farm life and pasture grazing.',
     vaccinated: true,
-    neutered: false
+    neutered: false,
+    price: 150,
+    phone: '123-456-7893'
   },
   {
     id: 5,
@@ -71,7 +81,9 @@ export const animals = [
     type: 'rabbit',
     description: 'Playful rabbit who loves fresh vegetables and hopping around.',
     vaccinated: true,
-    neutered: true
+    neutered: true,
+    price: 30,
+    phone: '123-456-7894'
   },
   {
     id: 6,
@@ -85,7 +97,9 @@ export const animals = [
     type: 'farm',
     description: 'Energetic goat who loves climbing and exploring new areas.',
     vaccinated: true,
-    neutered: true
+    neutered: true,
+    price: 75,
+    phone: '123-456-7895'
   },
   {
     id: 7,
@@ -99,7 +113,9 @@ export const animals = [
     type: 'bird',
     description: 'A colorful and talkative parrot who loves attention.',
     vaccinated: true,
-    neutered: false
+    neutered: false,
+    price: 120,
+    phone: '123-456-7896'
   },
   {
     id: 8,
@@ -113,13 +129,17 @@ export const animals = [
     type: 'farm',
     description: 'A very smart and clean pig who loves belly rubs.',
     vaccinated: true,
-    neutered: true
+    neutered: true,
+    price: 90,
+    phone: '123-456-7897'
   }
 ];
 
 const Adoption = () => {
   const navigate = useNavigate();
   const [selectedAnimal, setSelectedAnimal] = useState(null);
+  const [showAdoptionForm, setShowAdoptionForm] = useState(false);
+  const [showShelterModal, setShowShelterModal] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const [filterType, setFilterType] = useState('all');
 
@@ -138,6 +158,23 @@ const Adoption = () => {
     setSelectedAnimal(null);
   };
 
+  const handleShowAdoptionForm = () => {
+    setShowAdoptionForm(true);
+  };
+
+  const handleCloseAdoptionForm = () => {
+    setShowAdoptionForm(false);
+    setSelectedAnimal(null);
+  };
+
+  const handleShowShelterModal = () => {
+    setShowShelterModal(true);
+  };
+
+  const handleCloseShelterModal = () => {
+    setShowShelterModal(false);
+  };
+
   return (
     <div className="adoption-container">
       {/* Header */}
@@ -146,13 +183,7 @@ const Adoption = () => {
           <span className="back-icon">←</span>
           <span className="back-text">Back to Home</span>
         </button>
-        <div className="header-content">
-          <h1 className="page-title">
-            <span className="title-main">Find Your Perfect</span>
-            <span className="title-highlight">Companion</span>
-          </h1>
-          <p className="page-subtitle">Discover amazing animals waiting for their forever home</p>
-        </div>
+        
       </div>
 
       {/* Search and Filter Bar */}
@@ -233,6 +264,7 @@ const Adoption = () => {
                 </div>
                 <p className="animal-age">{animal.age}</p>
                 <p className="animal-description">{animal.description}</p>
+                <p className="animal-price">Adoption Fee: ₹{animal.price}</p>
               </div>
               <button className="adopt-btn" onClick={() => handleAdoptClick(animal)}>
                 <span className="btn-icon">❤️</span>
@@ -276,14 +308,22 @@ const Adoption = () => {
               </div>
             </div>
             <div className="modal-footer">
-              <button className="modal-adopt-btn">
+              <button className="modal-adopt-btn" onClick={handleShowAdoptionForm}>
                 <span className="btn-icon">❤️</span>
                 Adopt {selectedAnimal.name}
               </button>
-              <button className="modal-contact-btn">Contact Shelter</button>
+              <button className="modal-contact-btn" onClick={handleShowShelterModal}>Contact Shelter</button>
             </div>
           </div>
         </div>
+      )}
+
+      {showAdoptionForm && selectedAnimal && (
+        <AdoptionForm animal={selectedAnimal} onClose={handleCloseAdoptionForm} />
+      )}
+
+      {showShelterModal && selectedAnimal && (
+        <ShelterModal animal={selectedAnimal} onClose={handleCloseShelterModal} />
       )}
     </div>
   );

@@ -51,7 +51,7 @@
 }
 
 .header-content {
-  text-align: center;
+  text-align: right;
   flex: 1;
 }
 
@@ -59,7 +59,7 @@
   margin: 0;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-end;
   gap: 2px;
 }
 
@@ -73,10 +73,7 @@
 .title-highlight {
   font-size: 1.8rem;
   font-weight: 700;
-  background: linear-gradient(135deg, #667eea, #764ba2);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #ffffff;
 }
 
 .page-subtitle {
@@ -321,9 +318,16 @@
 
 .animal-description {
   font-size: 0.9rem;
-  color: #ccc;
-  line-height: 1.5;
-  margin: 0;
+  color: #666;
+  margin-bottom: 15px;
+  flex-grow: 1;
+}
+
+.animal-price {
+  font-size: 1rem;
+  font-weight: 900;
+  color: #fff;
+  margin-bottom: 15px;
 }
 
 .adopt-btn {
